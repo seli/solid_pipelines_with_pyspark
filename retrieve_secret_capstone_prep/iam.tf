@@ -40,7 +40,7 @@ resource "aws_iam_user_policy" "participant_permissions" {
             "Action": [
               "s3:GetObject"
             ],
-            "Resource": ["arn:aws:s3:::dmacademy-course-assets/airflow/*"]
+            "Resource": ["arn:aws:s3:::dmacademy-course-assets/pyspark/*"]
         },
         {
             "Effect": "Allow",
