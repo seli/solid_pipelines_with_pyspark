@@ -86,10 +86,24 @@ def combine_date_with_overflowed_minutes(
     return psf.from_unixtime(daystart_as_seconds_since_epoch + total_seconds)
 
 
-def read_data(path: Path):
-    spark = SparkSession.builder.getOrCreate()
+def read_data(path: str):
+    from pyspark import __version__
+    print(__version__)
+    spark = (
+        SparkSession.builder.config(
+            # TODO: check that the version matches your environment
+            "spark.jars.packages",
+            "org.apache.hadoop:hadoop-aws:3.2.0",
+        )
+        .config(
+            "fs.s3a.aws.credentials.provider",
+            "com.amazonaws.auth.DefaultAWSCredentialsProviderChain",
+        )
+        .getOrCreate()
+    )
+    print(path)
     return spark.read.csv(
-        str(path),
+        path,
         # For a CSV, `inferSchema=False` means every column stays of the string
         # type. There is no time wasted on inferring the schema, which is
         # arguably not something you would depend on in production either.
@@ -514,12 +528,14 @@ if __name__ == "__main__":
     target_dir.mkdir(exist_ok=True)
 
     # Extract
-    frame = read_data(resources_dir / "flights")
+    frame = read_data(
+        "s3a://dmacademy-course-assets/pyspark/AirlineSubsetCsv/"
+    )
     # Transform
     cleaned_frame = a_shorter_cleaning_function(frame)
     cleaned_frame.explain()  # instructional to see how Spark optimized the operations we requested.
     # Load
-    cleaned_frame.show()
+    #cleaned_frame.show()
     cleaned_frame.printSchema()
     cleaned_frame.write.parquet(
         path=str(target_dir / "cleaned_flights"),
