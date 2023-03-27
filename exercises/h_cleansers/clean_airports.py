@@ -23,7 +23,5 @@ if __name__ == "__main__":
 
     # Here, we set this option explicitly, so that we don't create 200 tiny 
     # files from the call to distinct()
-    import time
-    time.sleep(60)
     spark.conf.set("spark.sql.shuffle.partitions", "1")
     main()
