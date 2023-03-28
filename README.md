@@ -14,8 +14,8 @@ completed before those in `c_bar`, but both should come after those of
 ## Getting started
 
 While you can clone the repo locally, we do not offer support for setting up
-your coding environment. Instead, we recommend you [tackle the exercises
-using Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/seli/solid_pipelines_with_pyspark).
+your coding environment. Instead, we recommend you tackle the exercises
+using Gitpod
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/seli/solid_pipelines_with_pyspark)
 
