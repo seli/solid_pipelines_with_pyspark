@@ -17,7 +17,7 @@ While you can clone the repo locally, we do not offer support for setting up
 your coding environment. Instead, we recommend you [tackle the exercises
 using Gitpod][this gitpod].
 
-[//]: # ([![Open in Gitpod][gitpod logo]][this gitpod])
+[//]: # ([![Open in Gitpod][gitpod logo]](https://gitpod.io/#https://github.com/seli/solid_pipelines_with_pyspark))
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/seli/solid_pipelines_with_pyspark)
 
